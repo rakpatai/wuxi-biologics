@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WuXi Biologics — Record 2025 Results</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sarabun:wght@300;400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0D9488;
+    --teal-light: #5EEAD4;
+    --teal-dark: #0F766E;
+    --teal-glow: rgba(13,148,136,0.15);
+    --navy: #0A0F1C;
+    --deep-blue: #0E1425;
+    --slate: #1A2035;
+    --card-bg: rgba(255,255,255,0.025);
+    --text-primary: #E2E8F0;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-green: #22C55E;
+    --accent-amber: #F59E0B;
+    --border-subtle: rgba(13,148,136,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-primary);
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(13,148,136,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13,148,136,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background:
+      radial-gradient(ellipse at 50% 55%, rgba(13,148,136,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 30%, rgba(94,234,212,0.04) 0%, transparent 35%),
+      radial-gradient(ellipse at 25% 70%, rgba(13,148,136,0.05) 0%, transparent 40%);
+    animation: pulse 10s ease-in-out infinite alternate;
+  }
+
+  /* DNA helix decorative dots */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle 2px, rgba(13,148,136,0.15) 100%, transparent 100%);
+    background-size: 40px 40px;
+    background-position: 20px 20px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    pointer-events: none;
+    animation: drift 20s linear infinite;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.08); opacity: 0.6; }
+  }
+
+  @keyframes drift {
+    from { background-position: 20px 20px; }
+    to { background-position: 60px 60px; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 880px;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .hero-tag span {
+    display: inline-block;
+    padding: 0.35em 0.8em;
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+
+  .hero h1 .teal-text {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal), var(--teal-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 1.5rem auto 0;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    margin: 2.5rem auto;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+
+  .hero-meta .dot { color: var(--teal); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== CONTENT ===== */
+  .content-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* Section Headers */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 5rem 0 2.5rem;
+  }
+
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--teal);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  /* Paragraph */
+  p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.6rem;
+  }
+
+  p strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Pull Quote */
+  .pull-quote {
+    position: relative;
+    margin: 3.5rem 0;
+    padding: 2.5rem 2.5rem 2.5rem 3rem;
+    border-left: 3px solid var(--teal);
+    background: linear-gradient(135deg, rgba(13,148,136,0.05), transparent);
+  }
+
+  .pull-quote p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .pull-quote .attribution {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.85rem;
+    font-style: normal;
+    color: var(--teal);
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin: 3rem 0;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .stat-card:hover {
+    border-color: rgba(13,148,136,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(13,148,136,0.08);
+  }
+
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--teal-light);
+    line-height: 1.2;
+  }
+
+  .stat-unit {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .stat-growth {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-green);
+    margin-top: 0.5rem;
+    padding: 0.15em 0.55em;
+    background: rgba(34,197,94,0.1);
+    border-radius: 2px;
+  }
+
+  .stat-growth.amber {
+    color: var(--accent-amber);
+    background: rgba(245,158,11,0.1);
+  }
+
+  /* Financial Table */
+  .table-wrapper {
+    margin: 2.5rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+  }
+
+  .fin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .fin-table thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding: 1rem 1.2rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(13,148,136,0.15);
+    background: rgba(13,148,136,0.03);
+    white-space: nowrap;
+  }
+
+  .fin-table thead th:first-child { text-align: left; }
+
+  .fin-table tbody td {
+    padding: 0.9rem 1.2rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .fin-table tbody td:first-child {
+    text-align: left;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+
+  .fin-table tbody tr:hover { background: rgba(13,148,136,0.03); }
+
+  .growth-pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15em 0.5em;
+    border-radius: 2px;
+    background: rgba(34,197,94,0.1);
+    color: var(--accent-green);
+  }
+
+  /* Highlight Box */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(13,148,136,0.07), rgba(13,148,136,0.02));
+    border: 1px solid rgba(13,148,136,0.18);
+    border-radius: 3px;
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+  }
+
+  .highlight-box h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--teal-light);
+    margin-bottom: 1rem;
+  }
+
+  .highlight-box p {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .highlight-box p:last-child { margin-bottom: 0; }
+
+  /* Comparison Bars */
+  .comp-visual { margin: 2.5rem 0; }
+
+  .comp-item { margin-bottom: 1.5rem; }
+
+  .comp-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .comp-label span:first-child { color: var(--text-primary); }
+
+  .comp-label span:last-child {
+    color: var(--teal-light);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .comp-bar-bg {
+    height: 6px;
+    background: var(--slate);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .comp-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--teal-dark), var(--teal), var(--teal-light));
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Pipeline / Milestone Items */
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+
+  .milestone-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .milestone-card:hover {
+    border-color: rgba(13,148,136,0.3);
+  }
+
+  .milestone-card .mc-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--teal-light);
+    line-height: 1;
+  }
+
+  .milestone-card .mc-label {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .milestone-card .mc-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--teal);
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* Catalyst Timeline */
+  .catalyst-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .catalyst-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(13,148,136,0.1);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.2rem;
+    position: relative;
+  }
+
+  .catalyst-icon .ci-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .catalyst-icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 32px;
+    background: rgba(13,148,136,0.15);
+  }
+
+  .catalyst-item:last-child .catalyst-icon::after { display: none; }
+
+  .catalyst-content h5 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .catalyst-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .catalyst-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--teal);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Scroll Animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .content-wrapper { padding: 0 1.2rem 4rem; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .stat-card { padding: 1.2rem 0.8rem; }
+    .stat-value { font-size: 1.6rem; }
+    .section-title { font-size: 1.35rem; }
+    .pull-quote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+    .pull-quote p { font-size: 1.05rem; }
+    .highlight-box { padding: 1.5rem; }
+    .milestone-grid { grid-template-columns: 1fr; }
+    .hero-meta { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag"><span>Earnings Review &middot; CRDMO &middot; Biologics</span></div>
+    <h1><span class="teal-text">WuXi Biologics</span><br>ผลประกอบการปี 2025 ทำสถิติใหม่</h1>
+    <p class="hero-subtitle">เมื่อ "โรงงานผลิตยาชีวภาพ" ระดับโลก เดินเครื่องเต็มกำลัง — รายได้โต 16.7%, กำไรพุ่ง 45%, Backlog แตะ $23.7 พันล้าน</p>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <span>2269.HK</span>
+      <span class="dot">&bull;</span>
+      <span>24 มีนาคม 2026</span>
+      <span class="dot">&bull;</span>
+      <span>Annual Results FY2025</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTENT ===== -->
+<div class="content-wrapper">
+
+  <!-- SECTION 1 -->
+  <div class="section-header fade-in">
+    <span class="section-number">01</span>
+    <h2 class="section-title">CRDMO ระดับโลก ที่ยืนอยู่หลังยาชีวภาพรุ่นใหม่</h2>
+  </div>
+
+  <p class="fade-in">ในยุคที่อุตสาหกรรมยาชีวภาพ (Biologics) เติบโตอย่างก้าวกระโดด — จาก Antibody-Drug Conjugates (ADC) ไปจนถึง Bispecific Antibodies — มีบริษัทหนึ่งที่ทำหน้าที่เป็น <strong>"ครัวหลังบ้าน"</strong> ให้กับบริษัทยารายใหญ่ทั่วโลก ตั้งแต่การค้นพบ พัฒนา จนถึงผลิตยาในระดับอุตสาหกรรม</p>
+
+  <p class="fade-in"><strong>WuXi Biologics (2269.HK)</strong> เป็น CRDMO (Contract Research, Development and Manufacturing Organization) รายใหญ่ที่สุดแห่งหนึ่งของโลก มีพนักงานกว่า 13,000 คน กระจายอยู่ในจีน, สหรัฐฯ, ไอร์แลนด์, เยอรมนี, สิงคโปร์ และกาตาร์ โมเดลธุรกิจแบบ "Follow and Win the Molecule" คือการเข้าไปสนับสนุนลูกค้าตั้งแต่ขั้นวิจัย แล้วเติบโตไปพร้อมกันจนถึงการผลิตเชิงพาณิชย์</p>
+
+  <p class="fade-in">วันที่ 24 มีนาคม 2026 บริษัทประกาศผลประกอบการปี 2025 อย่างเป็นทางการ — และตัวเลขที่ออกมาเป็นสถิติใหม่เกือบทุกรายการ</p>
+
+  <!-- SECTION 2 -->
+  <div class="section-header fade-in">
+    <span class="section-number">02</span>
+    <h2 class="section-title">ตัวเลขที่พูดแทนทุกอย่าง</h2>
+  </div>
+
+  <div class="stats-grid fade-in">
+    <div class="stat-card">
+      <div class="stat-label">รายได้ FY2025</div>
+      <div class="stat-value">21,790</div>
+      <div class="stat-unit">ล้านหยวน</div>
+      <div class="stat-growth">+16.7% YoY</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">IFRS กำไรสุทธิ</div>
+      <div class="stat-value">5,733</div>
+      <div class="stat-unit">ล้านหยวน</div>
+      <div class="stat-growth">+45.3% YoY</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Gross Margin</div>
+      <div class="stat-value">46.0%</div>
+      <div class="stat-unit">IFRS Basis</div>
+      <div class="stat-growth">+500 bps</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">EBITDA</div>
+      <div class="stat-value">9,043</div>
+      <div class="stat-unit">ล้านหยวน</div>
+      <div class="stat-growth">+38.1% YoY</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Free Cash Flow</div>
+      <div class="stat-value">2,300</div>
+      <div class="stat-unit">ล้านหยวน</div>
+      <div class="stat-growth">+70%+ YoY</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Backlog</div>
+      <div class="stat-value">$23.7B</div>
+      <div class="stat-unit">USD</div>
+      <div class="stat-growth amber">Near-term $4.5B</div>
+    </div>
+  </div>
+
+  <p class="fade-in">จุดเด่นของผลประกอบการรอบนี้ไม่ใช่แค่ "รายได้โต" — แต่เป็น <strong>คุณภาพของการเติบโต</strong> Gross Margin ขยายตัวอย่างมีนัยสำคัญถึง 500 bps มาอยู่ที่ 46% สะท้อนว่ารายได้ที่โตมานั้นมาพร้อมกำไรที่หนาขึ้น ไม่ใช่แค่ขยายงานอย่างเดียว</p>
+
+  <div class="table-wrapper fade-in">
+    <table class="fin-table">
+      <thead>
+        <tr>
+          <th>รายการ</th>
+          <th>FY2025</th>
+          <th>FY2024</th>
+          <th>เปลี่ยนแปลง</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>รายได้ (ล้าน ¥)</td>
+          <td>21,790</td>
+          <td>18,675</td>
+          <td><span class="growth-pill">+16.7%</span></td>
+        </tr>
+        <tr>
+          <td>Gross Profit (ล้าน ¥)</td>
+          <td>10,019</td>
+          <td>7,651</td>
+          <td><span class="growth-pill">+30.9%</span></td>
+        </tr>
+        <tr>
+          <td>IFRS Net Profit (ล้าน ¥)</td>
+          <td>5,733</td>
+          <td>3,945</td>
+          <td><span class="growth-pill">+45.3%</span></td>
+        </tr>
+        <tr>
+          <td>Adj. Net Profit (ล้าน ¥)</td>
+          <td>6,586</td>
+          <td>5,397</td>
+          <td><span class="growth-pill">+22.0%</span></td>
+        </tr>
+        <tr>
+          <td>EBITDA (ล้าน ¥)</td>
+          <td>9,043</td>
+          <td>6,548</td>
+          <td><span class="growth-pill">+38.1%</span></td>
+        </tr>
+        <tr>
+          <td>Adj. Basic EPS (¥)</td>
+          <td>1.40</td>
+          <td>1.17</td>
+          <td><span class="growth-pill">+19.7%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="fade-in">ที่สำคัญ <strong>รายได้จาก Continuous Operations เติบโตมากกว่า 20%</strong> สะท้อนความแข็งแกร่งของธุรกิจหลักที่ไม่รวมรายการพิเศษ ขณะที่ Free Cash Flow พุ่งขึ้นกว่า 70% มาแตะ 2.3 พันล้านหยวน — สัญญาณว่าบริษัทสามารถแปลงกำไรเป็นเงินสดได้อย่างมีประสิทธิภาพ</p>
+
+  <!-- SECTION 3 -->
+  <div class="section-header fade-in">
+    <span class="section-number">03</span>
+    <h2 class="section-title">เครื่องยนต์การเติบโต — Bispecifics & ADC</h2>
+  </div>
+
+  <p class="fade-in">หัวใจของการเติบโตในปี 2025 อยู่ที่ <strong>Complex Biologics</strong> โดยเฉพาะ Bispecific Antibodies และ ADCs ซึ่งเป็นยาชีวภาพรุ่นใหม่ที่กำลังปฏิวัติวงการรักษามะเร็งและโรคภูมิคุ้มกัน</p>
+
+  <div class="highlight-box fade-in">
+    <h4>Complex Biologics — เครื่องยนต์หลักของ WuXi Bio</h4>
+    <p><strong>Bi- & Multi-specifics:</strong> สร้างรายได้โตกว่า 120% YoY คิดเป็นเกือบ 20% ของรายได้รวม</p>
+    <p><strong>โปรเจกต์ใหม่ 209 รายการ</strong> — สูงสุดเป็นประวัติการณ์ โดย 2 ใน 3 เป็น Bispecifics และ ADCs</p>
+    <p><strong>Pipeline รวม 945 โปรเจกต์</strong> — รวมถึง 74 Phase III และ 25 Commercial Manufacturing</p>
+    <p style="color: var(--teal-light); font-weight: 600; margin-top: 0.8rem;">Complex Modalities คิดเป็นมากกว่าครึ่งของ Pipeline ทั้งหมดแล้ว</p>
+  </div>
+
+  <div class="milestone-grid fade-in">
+    <div class="milestone-card">
+      <div class="mc-number">209</div>
+      <div class="mc-label">Integrated Projects ใหม่ในปี 2025</div>
+      <div class="mc-detail">สถิติใหม่ &middot; ~50% จากลูกค้าสหรัฐฯ</div>
+    </div>
+    <div class="milestone-card">
+      <div class="mc-number">945</div>
+      <div class="mc-label">Integrated Projects สะสม</div>
+      <div class="mc-detail">หนึ่งในพอร์ตใหญ่ที่สุดของโลก</div>
+    </div>
+    <div class="milestone-card">
+      <div class="mc-number">156</div>
+      <div class="mc-label">IND Filings ในปี 2025</div>
+      <div class="mc-detail">ขยาย Capacity เป็น 200 INDs/ปี</div>
+    </div>
+    <div class="milestone-card">
+      <div class="mc-number">28</div>
+      <div class="mc-label">PPQs สำเร็จในปี 2025</div>
+      <div class="mc-detail">+75% YoY &middot; 34 PPQs วางแผนปี 2026</div>
+    </div>
+  </div>
+
+  <p class="fade-in">การที่ครึ่งหนึ่งของโปรเจกต์ใหม่มาจากบริษัทยาสหรัฐฯ เป็นสัญญาณสำคัญ — แม้จะมีแรงกดดันทางภูมิรัฐศาสตร์ แต่ Demand จากฝั่ง Biopharma ยังคงแข็งแกร่ง เพราะความสามารถด้าน Complex Biologics ของ WuXi Bio นั้นหาทดแทนได้ยาก</p>
+
+  <!-- SECTION 4 -->
+  <div class="section-header fade-in">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Margin Story — กำไรหนาขึ้นทุกชั้น</h2>
+  </div>
+
+  <p class="fade-in">สิ่งที่ทำให้ผลประกอบการรอบนี้โดดเด่นเป็นพิเศษคือ <strong>การขยายตัวของ Margin ทุกระดับ</strong> — ไม่ใช่แค่ Top Line Growth</p>
+
+  <div class="comp-visual fade-in">
+    <div class="comp-item">
+      <div class="comp-label">
+        <span>IFRS Gross Margin</span>
+        <span>46.0% (+500 bps)</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: 46%;"></div>
+      </div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-label">
+        <span>Adj. Gross Margin</span>
+        <span>48.8% (+340 bps)</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: 49%;"></div>
+      </div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-label">
+        <span>EBITDA Margin</span>
+        <span>41.5% (+640 bps)</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: 42%;"></div>
+      </div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-label">
+        <span>Adj. EBITDA Margin</span>
+        <span>45.1% (+230 bps)</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: 45%;"></div>
+      </div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-label">
+        <span>IFRS Net Margin</span>
+        <span>26.3% (+520 bps)</span>
+      </div>
+      <div class="comp-bar-bg">
+        <div class="comp-bar-fill" style="width: 26%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="fade-in">การขยายตัวของ Margin มาจากสามปัจจัยหลักคือ <strong>Business Mix ที่ดีขึ้น</strong> — สัดส่วนงาน Complex Biologics ที่มี Margin สูงเพิ่มขึ้น, <strong>Capacity Utilization ที่สูงขึ้น</strong> โดยเฉพาะโรงงานในยุโรปที่เริ่ม Ramp-up และ <strong>WBS & Digitalization</strong> ที่ช่วยลดต้นทุนได้ 150 bps จาก Kaizen มากกว่า 430 โปรเจกต์</p>
+
+  <!-- SECTION 5 -->
+  <div class="section-header fade-in">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Global Expansion — กระจายฐานทั่วโลก</h2>
+  </div>
+
+  <p class="fade-in">WuXi Biologics กำลังเดินหน้ากลยุทธ์ <strong>"Global Dual Sourcing"</strong> อย่างจริงจัง เพื่อกระจายความเสี่ยงด้านภูมิรัฐศาสตร์และเข้าใกล้ลูกค้ามากขึ้น</p>
+
+  <div class="catalyst-item fade-in">
+    <div class="catalyst-icon"><div class="ci-dot"></div></div>
+    <div class="catalyst-content">
+      <div class="catalyst-tag">สหรัฐอเมริกา</div>
+      <h5>MFG11 Worcester, MA & MFG18 Cranbury, NJ</h5>
+      <p>ก่อสร้าง MFG11 พร้อม Bioreactor 6,000L จำนวน 6 ตัว และอัปเกรด MFG18 เพิ่มกำลังผลิตเชิงพาณิชย์</p>
+    </div>
+  </div>
+
+  <div class="catalyst-item fade-in">
+    <div class="catalyst-icon"><div class="ci-dot"></div></div>
+    <div class="catalyst-content">
+      <div class="catalyst-tag">สิงคโปร์</div>
+      <h5>Modular Drug Product & Drug Substance Facilities</h5>
+      <p>เริ่มก่อสร้างโรงงาน DP แบบ Modular ที่คาดว่าจะเป็นหนึ่งในโรงงาน DP ขนาดใหญ่ที่สุดในโลก</p>
+    </div>
+  </div>
+
+  <div class="catalyst-item fade-in">
+    <div class="catalyst-icon"><div class="ci-dot"></div></div>
+    <div class="catalyst-content">
+      <div class="catalyst-tag">กาตาร์</div>
+      <h5>MOU กับ Qatar Free Zones Authority</h5>
+      <p>ขยายฐานเข้าสู่ตะวันออกกลาง วางตำแหน่งเป็น Strategic Hub ใน CRDMO Network ระดับโลก</p>
+    </div>
+  </div>
+
+  <p class="fade-in">การกระจายฐานการผลิตนี้ไม่เพียงช่วยลดความเสี่ยงด้าน Supply Chain แต่ยังเปิดโอกาสให้เข้าถึงลูกค้าใหม่ในแต่ละภูมิภาค โดยเฉพาะในบริบทที่บริษัทยาหลายแห่งต้องการ CDMO ที่มีฐานผลิตนอกจีนเป็นทางเลือก</p>
+
+  <!-- SECTION 6 -->
+  <div class="section-header fade-in">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Research & Technology — ปลาใหญ่กินปลาเร็ว</h2>
+  </div>
+
+  <p class="fade-in">ฝั่ง Research Services ทำสถิติสูงสุดทั้งในแง่ Upfront Payment และ Total Payment โดยเฉพาะ <strong>CD3 T-cell Engager (TCE) Platform</strong> ที่ได้รับการยอมรับจากบริษัทยาระดับ Tier 1 อย่าง Vertex, Merck, GSK — ปัจจุบันมีกว่า 50 โปรเจกต์ที่มีสิทธิ์รับ Milestone Payment และ Royalties รวมศักยภาพมากกว่า 4 พันล้านดอลลาร์</p>
+
+  <div class="highlight-box fade-in">
+    <h4>WuXia&trade; TrueSite — เทคโนโลยีเปลี่ยนเกม</h4>
+    <p>แพลตฟอร์ม Cell Line รุ่นใหม่ที่สามารถ <strong>ย่นระยะเวลาจาก DNA ถึง IND เหลือเพียง 6 เดือน</strong></p>
+    <p>ให้ผลผลิต mAb Titer สูงกว่า <strong>8+ g/L</strong> จาก Clone เพียง 30 ตัว</p>
+    <p>รักษาเสถียรภาพการแสดงออกมากกว่า 99% ตลอด 60 Generations</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section-header fade-in">
+    <span class="section-number">07</span>
+    <h2 class="section-title">สิ่งที่ต้องจับตา — ปัจจัยเสี่ยง</h2>
+  </div>
+
+  <p class="fade-in">แม้ผลประกอบการจะสดใส แต่ WuXi Biologics ยังเผชิญความเสี่ยงหลายด้าน ปัจจัยที่สำคัญที่สุดยังคงเป็น <strong>ความตึงเครียดทางภูมิรัฐศาสตร์ระหว่างสหรัฐฯ กับจีน</strong> โดยเฉพาะ BIOSECURE Act ที่แม้ยังไม่ผ่านเป็นกฎหมาย แต่สร้างความไม่แน่นอนให้กับลูกค้าบางราย การกระจายฐานผลิตไปยังสหรัฐฯ สิงคโปร์ และกาตาร์ เป็นการ Mitigate ความเสี่ยงนี้อยู่ แต่ยังคงเป็นสิ่งที่ต้องติดตาม</p>
+
+  <p class="fade-in">นอกจากนี้ <strong>การแข่งขัน</strong> จาก CDMO รายอื่น ทั้ง Samsung Biologics, Lonza และ Fujifilm Diosynth ก็เข้มข้นขึ้นเรื่อยๆ ขณะที่ <strong>การลงทุนขยายกำลังผลิต</strong> จำนวนมากอาจกดดัน Free Cash Flow ในระยะสั้น หากไม่สามารถเติมเต็ม Capacity ได้ตามแผน</p>
+
+  <!-- SECTION 8 -->
+  <div class="section-header fade-in">
+    <span class="section-number">08</span>
+    <h2 class="section-title">บทสรุป — ปีแห่งสถิติใหม่</h2>
+  </div>
+
+  <p class="fade-in">ปี 2025 ของ WuXi Biologics คือปีที่ทุกอย่างมาลงตัว — รายได้โต, Margin ขยาย, Pipeline หนาขึ้น, เทคโนโลยีก้าวล้ำ และฐานทั่วโลกขยายตัว ด้วย Backlog มูลค่ากว่า 23.7 พันล้านดอลลาร์ และ 34 PPQs ที่วางแผนไว้ในปี 2026 ภาพ Visibility ของรายได้ในอนาคตนั้นชัดเจน</p>
+
+  <div class="pull-quote fade-in">
+    <p>"Our unique CRDMO model, underpinned by full lifecycle R-D-M integration, represents a structural competitive advantage that enhances project retention and supports sustainable high growth."</p>
+    <div class="attribution">— Dr. Chris Chen, CEO, WuXi Biologics</div>
+  </div>
+
+  <p class="fade-in">WuXi Biologics กำลังพิสูจน์ว่าโมเดล CRDMO แบบครบวงจรนั้นสร้างทั้ง <strong>Switching Cost</strong> ที่สูง (ลูกค้าย้ายออกยาก) และ <strong>Revenue Visibility</strong> ที่ดีเยี่ยม (Pipeline โต Backlog หนา) — นี่คือบริษัทที่คู่ควรแก่การติดตามสำหรับนักลงทุนที่สนใจเทรนด์ยาชีวภาพระดับโลก</p>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer fade-in">
+    <strong>Disclaimer:</strong> บทความนี้จัดทำขึ้นเพื่อวัตถุประสงค์ในการให้ข้อมูลเท่านั้น ไม่ถือเป็นคำแนะนำในการลงทุน การซื้อ หรือขายหลักทรัพย์ใดๆ ข้อมูลทางการเงินอ้างอิงจากประกาศผลประกอบการอย่างเป็นทางการของ WuXi Biologics เมื่อวันที่ 24 มีนาคม 2026 ผู้อ่านควรศึกษาข้อมูลเพิ่มเติมและพิจารณาปัจจัยความเสี่ยงต่างๆ ก่อนตัดสินใจลงทุน การลงทุนมีความเสี่ยง ผู้ลงทุนอาจได้รับเงินลงทุนคืนน้อยกว่าเงินลงทุนเริ่มแรก
+  </div>
+
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
